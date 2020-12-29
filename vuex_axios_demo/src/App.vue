@@ -1,12 +1,6 @@
 <template>
 	<div id="app">
-		<div class="top">
-		  <router-view class="menu" name="a" />
-		</div>
-		<div class="cneter">
-			<router-view class="sidebar" name="b" />
-			<router-view class="main" />
-		</div>
+		<router-view />
 	</div>
 </template>
 

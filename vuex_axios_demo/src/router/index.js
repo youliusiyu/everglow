@@ -11,26 +11,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-	components: {
-		default: Main,
-		a: Menu,
-		b: Sidebar
-	}
+    redirect: '/about'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/home',
+    name: 'home',
+    component: Home,
 	children: [
 	        // 当 /user/:id 匹配成功，
-	        // UserHome 会被渲染在 User 的 <router-view> 中
+	        // UserHome 会被渲染在 Home 的 <router-view> 中
 	        { path: '/HelloWorld', component: HelloWorld },
-	
+			{ path: '/board', component: () => import ('../components/board.vue') },
+			{ path: '/about', component: () => import ('../views/About.vue') },
 	        // ...其他子路由
 	      ]
   }
